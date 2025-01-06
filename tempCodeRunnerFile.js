@@ -22,13 +22,13 @@ mongoose
     console.log("Connected to database");
   })
   .catch((err) => {
-    console.error("Database connection error:", err.message); 
+    console.error("Database connection error:", err.message); // Log detailed error
   });
 
 app.get("/", async (req, res) => {
   try {
-    const products = await Product.find();
-    res.json(products);
+    const products = await Product.find(); // Wait for the database query
+    res.json(products); // Send the products as JSON
   } catch (err) {
     res
       .status(500)
