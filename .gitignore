@@ -1,3 +1,4 @@
 .env
 .codegpt
 /node_modules
+.vercel
