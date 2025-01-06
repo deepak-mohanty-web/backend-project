@@ -14,13 +14,17 @@ app.listen(process.env.PORT || 5000, () => {
   console.log("Server is running on port 5000");
 });
 mongoose
-  .connect(process.env.MONGO_URL)
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("Connected to database");
   })
   .catch((err) => {
-    console.log("Database connection error:", err.message);
+    console.error("Database connection error:", err.message); // Log detailed error
   });
+
 app.get("/", async (req, res) => {
   try {
     const products = await Product.find(); // Wait for the database query
